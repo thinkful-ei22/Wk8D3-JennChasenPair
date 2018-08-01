@@ -2,6 +2,7 @@ import React from 'react';
 import './complaintForm.css';
 import{reduxForm, Field} from 'redux-form';
 import{required, notEmpty, lengthOfFive, onlyNumbers} from '../validators/validators';
+import TrackingNumber from './trackingNumber';
 
 class ComplaintForm extends React.Component {
   render() {
@@ -12,7 +13,8 @@ class ComplaintForm extends React.Component {
           <div>
             <label htmlFor="trackingNumber">Tracking Number</label>
             <Field 
-              component='input' 
+              component={TrackingNumber}
+              element='input' 
               name="trackingNumber" 
               value 
               id="trackingNumber"
