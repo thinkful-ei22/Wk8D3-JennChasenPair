@@ -1,7 +1,8 @@
 import React from 'react';
 import './complaintForm.css';
+import{reduxForm, Field} from 'redux-form';
 
-export default class ComplaintForm extends React.Component {
+class ComplaintForm extends React.Component {
   render() {
     return (
       <div className="delivery-form">
@@ -9,21 +10,21 @@ export default class ComplaintForm extends React.Component {
         <form>
           <div>
             <label htmlFor="trackingNumber">Tracking Number</label>
-            <input name="trackingNumber" value id="trackingNumber"></input>
+            <Field component='input' name="trackingNumber" value id="trackingNumber" />
           </div>
           <div>
             <label htmlFor="issue">What is your issue?</label>
-            <select name="issue" id="issue">
+            <Field component='select' name="issue" id="issue">
               <option value="not-delivered">My delivery hasn't arrived.</option>
               <option value="wrong-item">Wrong item delivered.</option>
               <option value="missing-item">Part of my order was missing.</option>
               <option value="damaged-item">Some of my order arrived damaged.</option>
               <option value="other">Other (give details below).</option>
-            </select>
+            </Field>
           </div>
           <div>
             <label htmlFor="details">Give more details (optional)</label>
-            <textarea name="details" id="details"></textarea>
+            <Field component='textarea' name="details" id="details" />
           </div>
           <button tyle="submit">Submit</button>
         </form>
@@ -31,3 +32,7 @@ export default class ComplaintForm extends React.Component {
     );
   }
 }
+
+export default reduxForm({
+  form: 'complaint'
+})(ComplaintForm);
